@@ -1,0 +1,110 @@
+* {
+  --boxColor: #0ff7;
+}
+body {
+  background-color: black;
+  font-size: 75px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  perspective-origin: 50% calc(50% - 2em);
+  perspective: 10em;
+}
+
+.scene {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: boxrotate 60s infinite linear;
+  @keyframes boxrotate {
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+}
+.ball {
+  position: absolute;
+  bottom: 1em;
+  left: -0.5em;
+  height: 1em;
+  width: 1em;
+  border-radius: 50%;
+  background-color: lightblue;
+
+  background-image: radial-gradient(circle at top, lightblue, rgba(0, 0, 0, 1));
+  animation: boxrotate 60s infinite linear reverse;
+  @keyframes boxrotate {
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+}
+.cube {
+  position: absolute;
+  top: -1em;
+  left: -1em;
+  width: 2em;
+  height: 2em;
+
+  .left,
+  .right,
+  .front,
+  .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--boxColor);
+  }
+  .front {
+    transform: translateZ(1em);
+  }
+  .right {
+    background-color: white;
+    transform: rotateY(90deg) translateZ(1em);
+  }
+  .back {
+    background-color: yellow;
+    transform: rotateY(180deg) translateZ(1em);
+  }
+  .left {
+    background-color: red;
+    transform: rotateY(270deg) translateZ(1em);
+  }
+
+  .top {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: orange;
+    transform: translateY(-50%) rotateX(90deg);
+  }
+  .bottom {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: chocolate;
+    transform: translateY(50%) rotateX(90deg);
+  }
+}
+.floor {
+  position: absolute;
+  top: 1em;
+  width: 15em;
+  height: 15em;
+  transform: translate(-50%, -50%) rotateX(90deg);
+  background-image: radial-gradient(#0000, #000 100%),
+    repeating-conic-gradient(from 45deg, #111 0deg 90deg, #000 90deg 180deg);
+  background-size: 100%, 1em 1em;
+}
+
+// names
+
+#julie,
+#maria,
+#edgar,
+#jax,
+#bagzy,
+#awsome {
+  text-align: center;
+}
